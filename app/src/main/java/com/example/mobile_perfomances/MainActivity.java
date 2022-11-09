@@ -1,12 +1,14 @@
 package com.example.mobile_perfomances;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     Adapter pAdapter;
     private List<Perfom> listPer = new ArrayList<>();
+    Spinner spinner;
+   // String [] filter = {""};
+    String[] i = {"по возрастанию", "по убыванию"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         ListView lst = findViewById(R.id.BD_Perform);
         pAdapter = new Adapter(MainActivity.this, listPer);
         lst.setAdapter(pAdapter);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, i);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner=findViewById(R.id.sort);
+        spinner.setAdapter(adapter);
+
         new GPerfomances().execute();
     }
 
