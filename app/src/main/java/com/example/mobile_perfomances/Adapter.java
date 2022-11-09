@@ -70,7 +70,7 @@ public class Adapter extends BaseAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, update_data.class);
+                Intent intent = new Intent(mContext, update_delete_data.class);
                 intent.putExtra(Perfom.class.getSimpleName(), perfomance);
                 mContext.startActivity(intent);
             }
