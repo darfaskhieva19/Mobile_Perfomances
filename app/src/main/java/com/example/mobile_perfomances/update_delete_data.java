@@ -63,22 +63,9 @@ public class update_delete_data extends AppCompatActivity {
                 Log.d("MyLog","Image URI : "+data.getData());
                 Photo.setImageURI(data.getData());
                 Bitmap bitmap = ((BitmapDrawable)Photo.getDrawable()).getBitmap();
-                encodeImage(bitmap);
+                //encodeImage(bitmap);
             }
         }
-    }
-    private String encodeImage(Bitmap bitmap) {
-        int prevW = 150;
-        int prevH = bitmap.getHeight() * prevW / bitmap.getWidth();
-        Bitmap b = Bitmap.createScaledBitmap(bitmap, prevW, prevH, false);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        b.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
-        byte[] bytes = byteArrayOutputStream.toByteArray();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Img=Base64.getEncoder().encodeToString(bytes);
-            return Img;
-        }
-        return null;
     }
 
     public void Update(View view) {
@@ -90,5 +77,8 @@ public class update_delete_data extends AppCompatActivity {
     }
 
     public void Delete(View view) {
+    }
+
+    public void getImage(View view) {
     }
 }
